@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.mcos";
+option java_outer_classname = "Fretes";
+option objc_class_prefix = "HLW";
+
+package br.com.mcos;
+
+service FretesService {
+  rpc send (FretesRequest) returns (FretesReply) {}
+  // Criando o novo serviço calculaFrete
+  rpc calculaFrete(CalculaFreteRequest) returns (CalculaFreteResponse) {}
+}
+
+//Request do calculaFrete
+message CalculaFreteRequest {
+  string cep = 1;
+}
+
+// Response do calculaFrete
+message CalculaFreteResponse {
+  double valor = 1;
+  string cep = 2;
+}
+
+message FretesRequest {
+  string name = 1;
+}
+
+message FretesReply {
+  string message = 1;
+}
